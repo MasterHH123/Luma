@@ -1,0 +1,5 @@
+certificate.pem
+private_key.pem
+.env
+accounts_sample.json
+identity_sample.json
