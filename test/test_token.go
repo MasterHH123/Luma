@@ -73,15 +73,16 @@ func callTellerAPI(c *gin.Context) {
 	}
 	defer resp.Body.Close()
 
-	if resp.StatusCode != 200 {
-		c.IndentedJSON(resp.StatusCode, gin.H{"error": resp.Body})
-	}
-
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		fmt.Printf("Error reading body response: %v\n", err)
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"error": err})
 		return
+	}
+
+	if resp.StatusCode != 200 {
+		fmt.Printf("Teller API responded with %d, Body %s\n", resp.StatusCode, string(body))
+		c.Data(resp.StatusCode, "application/json", body)
 	}
 
 
