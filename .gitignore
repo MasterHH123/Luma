@@ -1,5 +1,6 @@
 certificate.pem
 private_key.pem
+dockerfile
 .env
 accounts_sample.json
 identity_sample.json
