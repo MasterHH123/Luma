@@ -68,7 +68,7 @@ func callTellerAPI(c *gin.Context) {
 	resp, err := client.Do(req)
 	if err != nil {
 		fmt.Printf("Couldn't make request to teller API: %v\n", err)
-		c.IndentedJSON(http.StatusBadGateway, gin.H{"error": err})
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"error": err})
 		return
 	}
 	defer resp.Body.Close()
